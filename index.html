@@ -1,64 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Мой сайт</title>
-  <style>
-    /* Это минимум, чтобы кнопка просто была видна */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #2980b9;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hi</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        padding: 20px 40px;
+        font-size: 24px;
+        cursor: pointer;
+        border: none;
+        background-color: #f0f0f0;
+        transition: background-color 0.2s;
+      }
+      button:hover {
+        background-color: #e0e0e0;
+      }
+      button:active {
+        background-color: #d0d0d0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="hi-btn">Hi</button>
 
-  <!-- Сама кнопка -->
-  <button id="myButton">Hi</button>
+    <script>
+      const btn = document.getElementById('hi-btn');
 
-  <script>
-    // Находим кнопку в коде
-    const button = document.getElementById('myButton');
+      function playSound() {
+        const audio = new Audio('sound.mp3');
+        audio.play().catch(error => {
+          console.error('Ошибка воспроизведения:', error);
+          alert('Не удалось проиграть звук. Проверь: 1) имя файла точно sound.mp3, 2) файл лежит рядом с index.html');
+        });
+      }
 
-    // Функция, которая срабатывает при нажатии
-    function playSound() {
-      // Вариант 1: Если у тебя есть файл sound.mp3 в папке сайта
-      const audio = new Audio('sound.mp3');
-      
-      // Пытаемся проиграть звук
-      audio.play().catch(error => {
-        console.log('Звук не найден или браузер заблокировал автовоспроизведение. Используем запасной вариант.');
-        
-        // Вариант 2 (Запасной): Если звука нет, просто меняем текст на кнопке
-        button.innerText = "Я сказал Hi! 😄";
-        
-        // Возвращаем текст обратно через 2 секунды
-        setTimeout(() => {
-          button.innerText = "Hi";
-        }, 2000);
-      });
-    }
-
-    // Вешаем функцию на кнопку
-    button.addEventListener('click', playSound);
-  </script>
-
-</body>
+      btn.addEventListener('click', playSound);
+    </script>
+  </body>
 </html>
