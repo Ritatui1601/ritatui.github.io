@@ -1,50 +1,105 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hi</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        font-family: Arial, sans-serif;
-      }
-      button {
-        padding: 20px 40px;
-        font-size: 24px;
-        cursor: pointer;
-        border: none;
-        background-color: #f0f0f0;
-        transition: background-color 0.2s;
-      }
-      button:hover {
-        background-color: #e0e0e0;
-      }
-      button:active {
-        background-color: #d0d0d0;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="hi-btn">Hi</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой сайт</title>
+  
+  <style>
+    /* Базовые стили страницы */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
 
-    <script>
-      const btn = document.getElementById('hi-btn');
+    /* Белая карточка по центру */
+    .container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
 
-      function playSound() {
-        const audio = new Audio('sound.mp3');
-        audio.play().catch(error => {
-          console.error('Ошибка воспроизведения:', error);
-          alert('Не удалось проиграть звук. Проверь: 1) имя файла точно sound.mp3, 2) файл лежит рядом с index.html');
-        });
-      }
+    h1 {
+      color: #2c3e50;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
 
-      btn.addEventListener('click', playSound);
-    </script>
-  </body>
+    /* Стиль кнопки */
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Контейнер для стрелок */
+    .arrow-container {
+      position: relative;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    /* Сама стрелка — рисуется через границы */
+    .arrow {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      /* Треугольник: левая граница красная, верх/низ прозрачные */
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 15px solid #e74c3c; /* красный цвет */
+      margin: 0 12px;
+      animation: bounce 2s infinite;
+    }
+
+    /* Анимация: стрелки подпрыгивают */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-6px); }
+      75% { transform: translateY(6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Привет!</h1>
+    <button onclick="playSound()">Слушать звук</button>
+
+    <!-- Три красные стрелки -->
+    <div class="arrow-container">
+      <div class="arrow"></div>
+      <div class="arrow"></div>
+      <div class="arrow"></div>
+    </div>
+  </div>
+
+  <!-- Скрипт для проигрывания звука -->
+  <script>
+    function playSound() {
+      const audio = new Audio('sound.mp3');
+      audio.play().catch(error => console.log('Ошибка воспроизведения:', error));
+    }
+  </script>
+
+</body>
 </html>
