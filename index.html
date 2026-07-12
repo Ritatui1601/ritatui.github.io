@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hi</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        padding: 20px 40px;
+        font-size: 24px;
+        cursor: pointer;
+        border: none;
+        background-color: #f0f0f0;
+        transition: background-color 0.2s;
+      }
+      button:hover {
+        background-color: #e0e0e0;
+      }
+      button:active {
+        background-color: #d0d0d0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="hi-btn">Hi</button>
+
+    <script>
+      const btn = document.getElementById('hi-btn');
+
+      function playSound() {
+        const audio = new Audio('sound.mp3');
+        audio.play().catch(error => {
+          console.error('Ошибка воспроизведения:', error);
+          alert('Не удалось проиграть звук. Проверь: 1) имя файла точно sound.mp3, 2) файл лежит рядом с index.html');
+        });
+      }
+
+      btn.addEventListener('click', playSound);
+    </script>
+  </body>
+</html>
